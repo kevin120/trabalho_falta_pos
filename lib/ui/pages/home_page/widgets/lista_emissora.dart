@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trabalho_falta_pos/models/models.dart';
 import 'package:trabalho_falta_pos/ui/components/components.dart';
+import 'package:trabalho_falta_pos/ui/pages/pages.dart';
 
 class ListaEmissora extends StatelessWidget {
   final List<Emissora> lista;
@@ -32,8 +33,15 @@ class ListaEmissora extends StatelessWidget {
                   const Icon(Icons.arrow_forward_ios),
                 ]),
           ),
+          onTap: () {_abrirItem(context, lista[index]);},
         );
       },
     );
+  }
+
+  void _abrirItem(BuildContext context, Emissora emissora) {
+    Navigator.push(context, MaterialPageRoute(
+        builder: (context) => EmissoraPage(emissora)
+    ));
   }
 }
